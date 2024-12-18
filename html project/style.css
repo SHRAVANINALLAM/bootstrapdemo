@@ -1,0 +1,11 @@
+h2{
+    color: burlywood;
+    background-color: brown;
+    padding: 10px;
+}
+p{
+    background-image: url("image/img.jpeg");
+    padding: 10px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 20px;
+}

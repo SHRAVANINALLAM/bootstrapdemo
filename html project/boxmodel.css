@@ -1,0 +1,22 @@
+.container{
+    border: 2px dotted red;
+    margin-top: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    padding: 20px;
+    background-color: antiquewhite;
+    /*line-height: 15px;
+    letter-spacing: 10px;
+    background-image: url(image/logo.jpeg);*/
+    width: 400px;
+    height: 400px;
+    float: left;
+    
+}
+h2{
+    background-color: aqua;
+    padding: 10px;
+}
+p{
+    text-indent: 100px;
+    line-height: 40px;
+}

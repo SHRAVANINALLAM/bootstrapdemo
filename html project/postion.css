@@ -1,0 +1,10 @@
+.relative{
+    width: 100px;
+    height: 100px;
+    border: 2px solid rebeccapurple;
+    background-color: aqua;
+    position: sticky;
+    top: 100px;
+    right: 100px;
+
+}
