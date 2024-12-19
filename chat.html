@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat App</title>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .chat-container {
+            width: 400px;
+            max-height: 600px;
+            background: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0);
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .chat-header {
+            background: #007bff;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        .chat-window {
+            flex: 1;
+            padding: 10px;
+            overflow-y: auto;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+        }
+        .chat-window p{
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .user-message {
+            background: #007bff;
+            color: white;
+            align-self: flex-end;
+        }
+        .bot-message {
+            background: #f1f1f1;
+            color: #333;
+            align-self: flex-start;
+        }
+        .chat-input {
+            display: flex;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+        }
+        .chat-input input {
+            flex: 1;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        .chat-input button{
+            margin-left: 10px;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .chat-input button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>Simple Chat App</h2>
+        </div>
+        <div class="chat-window" id="chatWindow"></div>
+        <div class="chat-input">
+            <input type="text" id="messageInput" placeholder="=Type Your Message.."/>
+            <button onclick="sendMessage()">Send</button>
+        </div>
+    </div>
+    <script>
+        function sendMessage(){
+            const chatWindow = document.getElementById("chatWindow")
+            const messageInput = document.getElementById("messageInput")
+            const userMessage = messageInput.value.trim();
+            if(userMessage === ""){
+                alert("Please enter a message.");
+                return;
+            }
+
+            // add user's message
+            const userMessageElement = document.createElement("p");
+            userMessageElement.textContent = userMessage;
+            userMessageElement.className = "user-message";
+            chatWindow.appendChild(userMessageElement);
+
+            //scroll to the latest message
+            chatWindow.scrollTop = chatWindow.scrollHeight;
+
+            //simulate bot response
+            setTimeout(() => {
+                const botMessageElement = document.createElement("p");
+                botMessageElement.textContent ="Bot: " + generateBotResponse(userMessage);
+                botMessageElement.className = "bot-message";
+                chatWindow.appendChild(botMessageElement);
+
+                //scroll to the latest message
+                chatWindow.scrollTop = chatWindow.scrollHeight;
+            },500);
+
+            //clear input
+            messageInput.value="";
+        }
+        function generateBotResponse(message) {
+            const responses = [
+                "Hello! How can I assist you?",
+                "That's interesting!",
+                "I'm here to help.", 
+                "Can you elaborate?",
+                "Let's chat some more!",
+            ];
+            return responses[Math.floor(Math.random() * responses.length)];
+        }
+    </script>
+    
+</body>
+</html>
